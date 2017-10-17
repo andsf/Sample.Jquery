@@ -4,7 +4,7 @@
 class ParrotApi
 {
     private $sendData = [];
-    
+
     /**
      * post ajax request
      * @param  array  $params post parameter
@@ -16,7 +16,7 @@ class ParrotApi
         $this->setResponseData($params);
         return $this;
     }
-    
+
     /**
      * get ajax request
      * @param  array  $params get parameter
@@ -28,7 +28,7 @@ class ParrotApi
         $this->setResponseData($params);
         return $this;
     }
-    
+
     /**
      * @return this
      */
@@ -37,7 +37,7 @@ class ParrotApi
         $this->sendData['error'] = 'no set data.';
         return $this;
     }
-    
+
     /**
      * response convert json
      * @return json
@@ -45,9 +45,10 @@ class ParrotApi
     public function toJson()
     {
         header("Content-Type: application/json; charset=utf-8");
+        header("Access-Control-Allow-Origin: *");
         echo json_encode($this->sendData);
     }
-    
+
     /**
      * set response data
      * @param array $params GET or POST parameter
